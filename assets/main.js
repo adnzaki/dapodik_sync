@@ -7,6 +7,7 @@ const App = {
       submitText: '',
       errorText: '',
       hasError: false,
+      syncSuccess: false,
       disable: false,
     }
   },
@@ -15,18 +16,17 @@ const App = {
   },
   methods: {
     getPesertaDidik() {
+      this.syncSuccess = false
       this.disable = true
       this.submitText = 'Mengambil data peserta didik...'
       this.pull('PesertaDidik', data => {
-        this.pushPesertaDidik(data)
+        this.submitText = `Mengirim data sejumlah ${data.results} peserta didik...`
+        this.push('peserta-didik', data.rows, () => {
+          // next task...
+          this.syncSuccess = true
+          this.resetForm()
+        })
       })
-    },
-    pushPesertaDidik(data) {
-      this.submitText = `Mengirim data sejumlah ${data.results} peserta didik...`
-      this.push('peserta-didik', data.rows, msg => {
-        console.log('Message: ' + msg)
-      })
-      this.resetForm()
     },
     resetForm() {
       // this.npsn = ''
@@ -37,17 +37,30 @@ const App = {
       this.submitText = this.defaultText
     },
     push(destination, data, nextTask) {
+      const opsiPd1 = document.getElementById('opsiPd1')
+      const opsiPd2 = document.getElementById('opsiPd2')
+      let selectedOption = opsiPd1.checked ? opsiPd1.value : opsiPd2.value
+      
       fetch(`${this.pushUrl}${destination}`, {
         method: 'POST',
         mode: 'cors',
-        body: this.createFormData({ data: JSON.stringify(data) }),
+        body: this.createFormData({ 
+          data: JSON.stringify(data),
+          option: selectedOption
+        }),
         headers: {
           Authorization: `Bearer ${this.actudentToken}`
         }
       })
         .then(response => response.json())
-        .then(msg => {
-          // if(msg === 'OK') nextTask(data)
+        .then(data => {
+          if(data.msg === 'OK') {
+            nextTask()
+          } else {
+            this.hasError = true
+            this.errorText = data.msg
+            this.resetForm()
+          }
         })
         .catch((error) => {
           console.error('Error:', error)

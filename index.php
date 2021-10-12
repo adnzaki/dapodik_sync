@@ -57,6 +57,9 @@
                 <button type="button" style="color: white; margin-top: -20px;" class="btn bg-danger w-100 mb-4" v-if="hasError">
                   {{ errorText }}
                 </button>
+                <button type="button" style="color: white; margin-top: -20px;" class="btn bg-success w-100 mb-4" v-if="syncSuccess">
+                  Sinkronisasi dengan Dapodik berhasil. Anda bisa menutup halaman ini sekarang.
+                </button>
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">NPSN</label>
@@ -79,6 +82,26 @@
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">Token Akses Actudent</label>
                     <input class="form-control" aria-label="Token Akses API Actudent" type="text" v-model="actudentToken">
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <div class="row">
+                    <div class="col-12 col-md-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="opsiPd" id="opsiPd1" value="pdBaru" checked>
+                        <label class="form-check-label" for="opsiPd1">
+                          Peserta Didik Baru
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="opsiPd" value="semua" id="opsiPd2">
+                        <label class="form-check-label" for="opsiPd2">
+                          Semua Peserta Didik
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="row">
