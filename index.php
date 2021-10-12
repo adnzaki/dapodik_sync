@@ -48,12 +48,15 @@
       </div>
     </section>
     <section>
-      <div class="container">
+      <div class="container" style="margin-top: -10px;">
         <div class="row">
           <div class="col-lg-7 mx-auto d-flex justify-content-center flex-column">
             <!-- <h3 class="text-center">Form Koneksi Dapodik</h3> -->
             <form role="form" id="contact-form" autocomplete="off">
               <div class="card-body">
+                <button type="button" style="color: white; margin-top: -20px;" class="btn bg-danger w-100 mb-4" v-if="hasError">
+                  {{ errorText }}
+                </button>
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">NPSN</label>
@@ -69,20 +72,20 @@
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">URL Actudent Sekolah Anda</label>
-                    <input class="form-control" aria-label="Token Akses API Actudent" type="text">
+                    <input class="form-control" aria-label="Token Akses API Actudent" type="text" v-model="domain">
                   </div>
                 </div>
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">Token Akses Actudent</label>
-                    <input class="form-control" aria-label="Token Akses API Actudent" type="text">
+                    <input class="form-control" aria-label="Token Akses API Actudent" type="text" v-model="actudentToken">
                   </div>
                 </div>
                 <div class="row">
                   <div class="col-md-12">
                     <button type="button" style="color: white;" class="btn bg-info w-100"
                       :disabled="disable" 
-                      @click="exec('PesertaDidik')">
+                      @click="getPesertaDidik">
                       {{ submitText }}
                     </button>
                   </div>
