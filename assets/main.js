@@ -73,7 +73,7 @@ const App = {
         token: this.token
       }
 
-      fetch(`http://localhost/dapodik_sync/get-data.php?type=${type}`, {
+      fetch(`${this.appHost}/dapodik_sync/get-data.php?type=${type}`, {
         method: 'POST',
         body: this.createFormData(data),
       })
@@ -102,6 +102,9 @@ const App = {
     }
   },
   computed: {
+    appHost() {
+      return `http://${window.location.host}`
+    },
     pushUrl() {
       let protocol
       this.domain === 'localhost'
