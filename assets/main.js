@@ -1,11 +1,12 @@
 const App = {
   data() {
     return {
-      npsn: '', token: '',
-      domain: '', actudentToken: '',
-      defaultText: 'Sinkronisasi ke Server Actudent',
+      npsn: '20231526', token: 'a2VU6VdVr8qgxgs',
+      domain: 'localhost', actudentToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGxvY2FsaG9zdCIsIm5hbWEiOiJBZG5hbiBaYWtpIiwidXNlckxldmVsIjoiMSIsImxvZ2dlZF9pbiI6dHJ1ZX0.QHQX8zZWp89OMmzXmc4f6t-zS1B0x8zrGWMQd2ZXTVQ',
+      defaultText: 'Kirim ke Server Actudent',
       submitText: '',
       errorText: '',
+      successText: [],
       hasError: false,
       syncSuccess: false,
       disable: false,
@@ -16,30 +17,41 @@ const App = {
   },
   methods: {
     getPesertaDidik() {
+      this.successText = []
       this.syncSuccess = false
       this.disable = true
       this.submitText = 'Mengambil data peserta didik...'
       this.pull('PesertaDidik', data => {
-        this.submitText = `Mengirim data sejumlah ${data.results} peserta didik...`
-        this.push('peserta-didik', data.rows, () => {
-          // next task...
-          this.syncSuccess = true
+        this.submitText = `Mengirim data peserta didik...`
+        this.push('peserta-didik', data.rows, res => {
+          this.successText.push(res.note)
+          this.getGtk()            
+        }, true)
+      })
+    },
+    getGtk() {
+      this.submitText = 'Mengambil data guru dan tenaga kependidikan...'
+      this.pull('Gtk', data => {
+        // this.submitText = `Mengirim data sejumlah ${data.results} GTK...`
+        this.submitText = `Mengirim data guru dan tenaga kependidikan...`
+        this.push('gtk', data.rows, res => {
+          this.successText.push(res.note)
           this.resetForm()
         })
       })
     },
     resetForm() {
-      // this.npsn = ''
-      // this.token = ''
-      // this.domain = ''
-      // this.actudentToken = ''
       this.disable = false
       this.submitText = this.defaultText
+      $('#successModal').modal('show')
     },
-    push(destination, data, nextTask) {
+    push(destination, data, nextTask, isStudent = false) {
       const opsiPd1 = document.getElementById('opsiPd1')
       const opsiPd2 = document.getElementById('opsiPd2')
-      let selectedOption = opsiPd1.checked ? opsiPd1.value : opsiPd2.value
+      let selectedOption = null
+      if(isStudent) {
+        opsiPd1.checked ? selectedOption = opsiPd1.value : selectedOption = opsiPd2.value
+      } 
       
       fetch(`${this.pushUrl}${destination}`, {
         method: 'POST',
@@ -54,13 +66,7 @@ const App = {
       })
         .then(response => response.json())
         .then(data => {
-          if(data.msg === 'OK') {
-            nextTask()
-          } else {
-            this.hasError = true
-            this.errorText = data.msg
-            this.resetForm()
-          }
+          nextTask(data)
         })
         .catch((error) => {
           console.error('Error:', error)
