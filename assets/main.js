@@ -1,8 +1,8 @@
 const App = {
   data() {
     return {
-      npsn: '', token: '',
-      domain: '', actudentToken: '',
+      npsn: '20231526', token: 'a2VU6VdVr8qgxgs',
+      domain: 'localhost', actudentToken: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjEiLCJlbWFpbCI6ImFkbWluQGxvY2FsaG9zdCIsIm5hbWEiOiJBZG5hbiBaYWtpIiwidXNlckxldmVsIjoiMSIsImxvZ2dlZF9pbiI6dHJ1ZX0.QHQX8zZWp89OMmzXmc4f6t-zS1B0x8zrGWMQd2ZXTVQ',
       defaultText: 'Kirim ke Server Actudent',
       submitText: '',
       errorText: '',
