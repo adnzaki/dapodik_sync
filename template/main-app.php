@@ -86,24 +86,26 @@
                   </div>
                 </div>
                 <div class="mb-4">
-                  <div class="row">
-                    <div class="col-12 col-md-6">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="opsiPd" id="opsiPd1" value="pdBaru" checked>
-                        <label class="form-check-label" for="opsiPd1">
-                          Peserta Didik Baru
-                        </label>
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="opsiPd" value="semua" id="opsiPd2">
-                        <label class="form-check-label" for="opsiPd2">
-                          Semua Peserta Didik
-                        </label>
-                      </div>
-                    </div>
+                  <label class="form-label">Metode Penarikan</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="opsiPd" id="opsiPd1" value="pdBaru" checked>
+                    <label class="form-check-label" for="opsiPd1">
+                      Peserta Didik Baru
+                    </label>
                   </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="opsiPd" value="semua" id="opsiPd2">
+                    <label class="form-check-label" for="opsiPd2">
+                      Semua Peserta Didik
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="opsiPd" value="pindahan" id="opsiPd3">
+                    <label class="form-check-label" for="opsiPd3">
+                      Peserta Didik Pindahan
+                    </label>
+                  </div>
+
                 </div>
                 <div class="row">
                   <div class="col-md-12">
