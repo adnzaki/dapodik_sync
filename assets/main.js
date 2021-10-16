@@ -10,10 +10,17 @@ const App = {
       hasError: false,
       syncSuccess: false,
       disable: false,
+      opsiPd: ''
     }
   },
   mounted() {
     this.submitText = this.defaultText
+    this.opsiPd = $('input[name=opsiPd]').val()
+    
+    let obj = this
+    $('input[name=opsiPd]').change(function() {
+      obj.opsiPd = this.value
+    })
   },
   methods: {
     getPesertaDidik() {
@@ -23,42 +30,51 @@ const App = {
       this.submitText = 'Mengambil data peserta didik...'
       this.pull('PesertaDidik', data => {
         this.submitText = `Mengirim data peserta didik...`
+        console.log(this.opsiPd)
         this.push('peserta-didik', data.rows, res => {
           this.successText.push(res.note)
           this.getGtk()            
-        }, true)
+        })
       })
     },
     getGtk() {
       this.submitText = 'Mengambil data guru dan tenaga kependidikan...'
       this.pull('Gtk', data => {
-        // this.submitText = `Mengirim data sejumlah ${data.results} GTK...`
         this.submitText = `Mengirim data guru dan tenaga kependidikan...`
         this.push('gtk', data.rows, res => {
           this.successText.push(res.note)
+          if(this.opsiPd !== 'pindahan') {
+            this.getRombel()
+          } else {
+            this.successText.push('Tidak ada penarikan data rombongan belajar untuk peserta didik pindahan')
+            this.resetForm()
+            $('#successModal').modal('show')
+          }
+        })
+      })
+    },
+    getRombel() {
+      this.submitText = 'Mengambil data rombongan belajar...'
+      this.pull('RombonganBelajar', data => {
+        this.submitText = `Mengirim data rombongan belajar...`
+        this.push('rombel', data.rows, res => {
+          this.successText.push(res.note)
           this.resetForm()
+          $('#successModal').modal('show')
         })
       })
     },
     resetForm() {
       this.disable = false
-      this.submitText = this.defaultText
-      $('#successModal').modal('show')
+      this.submitText = this.defaultText      
     },
-    push(destination, data, nextTask, isStudent = false) {
-      const opsiPd1 = document.getElementById('opsiPd1')
-      const opsiPd2 = document.getElementById('opsiPd2')
-      let selectedOption = null
-      if(isStudent) {
-        opsiPd1.checked ? selectedOption = opsiPd1.value : selectedOption = opsiPd2.value
-      } 
-      
+    push(destination, data, nextTask) {
       fetch(`${this.pushUrl}${destination}`, {
         method: 'POST',
         mode: 'cors',
         body: this.createFormData({ 
           data: JSON.stringify(data),
-          option: selectedOption
+          option: this.opsiPd
         }),
         headers: {
           Authorization: `Bearer ${this.actudentToken}`
