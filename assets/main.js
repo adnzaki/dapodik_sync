@@ -24,18 +24,28 @@ const App = {
   },
   methods: {
     getPesertaDidik() {
-      this.successText = []
-      this.syncSuccess = false
-      this.disable = true
-      this.submitText = 'Mengambil data peserta didik...'
-      this.pull('PesertaDidik', data => {
-        this.submitText = `Mengirim data peserta didik...`
-        console.log(this.opsiPd)
-        this.push('peserta-didik', data.rows, res => {
-          this.successText.push(res.note)
-          this.getGtk()            
-        })
-      })
+      if(this.npsn !== '' 
+      && this.token !== '' 
+      && this.domain !== '' 
+      && this.actudentToken !== '') {
+        this.hasError = false
+        this.errorText = ''
+        this.successText = []
+        this.syncSuccess = false
+        this.disable = true
+        this.submitText = 'Mengambil data peserta didik...'
+        this.pull('PesertaDidik', data => {
+          this.submitText = `Mengirim data peserta didik...`
+          console.log(this.opsiPd)
+          this.push('peserta-didik', data.rows, res => {
+            this.successText.push(res.note)
+            this.getGtk()            
+          })
+        })        
+      } else {
+        this.hasError = true
+        this.errorText = 'Semua form isian wajib diisi!'
+      }
     },
     getGtk() {
       this.submitText = 'Mengambil data guru dan tenaga kependidikan...'
