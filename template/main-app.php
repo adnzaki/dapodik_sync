@@ -6,7 +6,11 @@
               <span class="badge bg-primary mb-3">Actudent Utility Tool</span>
               <h2 class="text-dark mb-0">Dapodik Synchronizer v1.0</h2>
               <p class="lead">
-                Silakan ikuti petunjuk penggunaan Dapodik Synchronizer untuk menarik data
+                Silakan ikuti <strong>
+                  <a :href="appHost + '/dapodik_sync/petunjuk.php'">
+                    petunjuk penggunaan 
+                  </a></strong>
+                  Dapodik Synchronizer untuk menarik data
                 dari Web Service lokal Dapodik anda
               </p>
             </div>
@@ -53,13 +57,6 @@
                   v-if="hasError">
                   {{ errorText }}
                 </button>
-                <!-- <button type="button" style="color: white; margin-top: -20px;" class="btn bg-success w-100 mb-4"
-                  v-if="syncSuccess">
-                  Pengiriman data dari Dapodik berhasil.
-                  <ul>
-                    <li v-for="(item, index) in successText" :key="index">{{ item }}</li>
-                  </ul>
-                </button> -->
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
                     <label class="form-label">NPSN</label>
@@ -109,7 +106,7 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <button type="button" style="color: white;" class="btn bg-info w-100" :disabled="disable"
+                    <button type="button" style="color: white;" class="btn bg-gradient-info w-100" :disabled="disable"
                       @click="getPesertaDidik">
                       {{ submitText }}
                     </button>
