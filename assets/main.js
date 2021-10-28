@@ -69,9 +69,15 @@ const App = {
         this.submitText = `Mengirim data rombongan belajar...`
         this.push('rombel', data.rows, res => {
           this.successText.push(res.note)
-          this.resetForm()
-          $('#successModal').modal('show')
+          this.setAnggotaRombel()
         })
+      })
+    },
+    setAnggotaRombel() {
+      this.submitText = 'Memetakan anggota rombongan belajar...'
+      this.push('set-anggota-rombel', {}, res => {
+        this.resetForm()
+        $('#successModal').modal('show')
       })
     },
     resetForm() {
