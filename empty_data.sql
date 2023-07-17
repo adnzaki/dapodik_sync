@@ -1,0 +1,13 @@
+DELETE FROM tb_presence;
+DELETE from tb_student_grade;
+DELETE FROM tb_student_parent;
+DELETE FROM tb_score_student;
+DELETE FROM tb_student;
+DELETE FROM tb_parent;
+DELETE FROM tb_homework;
+DELETE FROM tb_journal;
+DELETE FROM tb_schedule;
+DELETE FROM tb_score;
+DELETE FROM tb_lessons_grade;
+DELETE FROM tb_grade;
+DELETE FROM tb_staff;

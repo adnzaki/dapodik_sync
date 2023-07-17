@@ -1,5 +1,24 @@
 # Change Log
 
+## [3.0.4] 2022-06-23
+### BugFixing
+- fix inputs on RTL
+- update <html> tag border
+
+## [3.0.3] 2022-06-09
+### Update and Improvements
+- update Bootstrap to v5.2.0-beta1
+- fix code preview for input-outine
+
+## [3.0.2] 2022-03-25
+### Updates
+- update SCSS folder
+
+## [3.0.1] 2022-03-07
+### Update and Improvements
+- fix running 'npm install' issue
+- fix SCSS compiling issues
+
 ## [3.0.0] 2021-10-07
 ### Refactor and Improvements
 - Update Bootstrap to v5.1.1

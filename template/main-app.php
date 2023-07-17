@@ -25,11 +25,11 @@
 
             <!-- Modal -->
             <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
-              aria-hidden="true">
+              aria-hidden="true" data-bs-backdrop="static">
               <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Penarikan Data Selesai</h5>
+                    <h5 class="modal-title">Penarikan Data Selesai</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
@@ -39,7 +39,7 @@
                   </div>
                   <div class="modal-footer justify-content-right">
                     <!-- <button type="button" class="btn bg-gradient-dark" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" @click="closeMessage">Tutup</button>
                   </div>
                 </div>
               </div>

@@ -10,12 +10,15 @@ const App = {
       hasError: false,
       syncSuccess: false,
       disable: false,
-      opsiPd: ''
+      opsiPd: '',
+      modal: null,
+      showBackdrop: false,
     }
   },
   mounted() {
     this.submitText = this.defaultText
     this.opsiPd = $('input[name=opsiPd]').val()
+    this.modal = new bootstrap.Modal(document.getElementById('successModal'), { keyboard: false })
     
     let obj = this
     $('input[name=opsiPd]').change(function() {
@@ -23,6 +26,13 @@ const App = {
     })
   },
   methods: {
+    showMessage() {
+      this.modal.show()
+      this.showBackdrop = true
+    },
+    closeMessage() {
+      this.showBackdrop = false
+    },
     getPesertaDidik() {
       if(this.npsn !== '' 
       && this.token !== '' 
@@ -58,7 +68,9 @@ const App = {
           } else {
             this.successText.push('Tidak ada penarikan data rombongan belajar untuk peserta didik pindahan')
             this.resetForm()
-            $('#successModal').modal('show')
+            //$('#successModal').modal('show')
+            //this.modal.show()
+            this.showMessage()
           }
         })
       })
@@ -77,7 +89,9 @@ const App = {
       this.submitText = 'Memetakan anggota rombongan belajar...'
       this.push('set-anggota-rombel', {}, res => {
         this.resetForm()
-        $('#successModal').modal('show')
+        // $('#successModal').modal('show')
+        //this.modal.show()
+        this.showMessage()
       })
     },
     resetForm() {

@@ -1,3 +1,20 @@
 .pl-25 {
   padding-left: 25px;
 }
+
+.modal-backdrop {
+	display: none;
+}
+
+.ds-modal-backdrop {
+	width: 120%;
+	height: 200vh;
+	background-color: rgba(0, 0, 0, 0.458);
+	position: fixed;
+	z-index: 100;
+	top: -20px;
+	left: -30px;
+  overscroll-behavior: auto contain;
+  overflow: auto;
+}
+
