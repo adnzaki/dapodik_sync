@@ -51,7 +51,38 @@
   
 </div>
 
-<h3>5. Keterbatasan Aplikasi</h3>
+<h3>5. Tentang Penarikan Data Rombel</h3>
+<div class="pl-25">
+  <p>
+    Dapodik Puller memiliki keterbatasan dalam penarikan data rombel. 
+    Berikut beberapa kondisi yang dapat menyebabkan keterbatasan saat penarikan data:
+    <ol>
+      <li>
+        <h6>Data Pegawai Sudah Ada</h6>
+        <p>Jika data pegawai sudah terinput di Actudent, maka Dapodik Puller akan memilih salah satu guru
+        untuk dijadikan wali kelas pada semua rombel yang baru ditarik.
+        Sekolah dapat mengganti wali kelas bawaan tersebut sesuai dengan kondisi sekolah melalui aplikasi Actudent.</p>
+      </li>
+      <li>
+        <h6>Data Siswa Sudah Ada</h6>
+        <p>Dapodik Puller tidak dapat memasukkan siswa yang sudah ada di Actudent ke dalam rombel yang baru ditarik dari Dapodik,
+          maka itu sekolah harus menginput siswa tersebut secara manual dari Actudent.</p>
+      </li>
+    </ol>
+    
+  </p>
+  <h6>Apa yang menyebabkan keterbatasan tersebut?</h6>
+  <p>
+    Keterbatasan saat penarikan data (selain karena beberapa kondisi yang disebutkan sebelumnya) secara teknis
+    dikarenakan adanya perbedaan sistem ID unik pada aplikasi Actudent dan Dapodik, karena pada dasarnya 
+    Actudent adalah sistem tersendiri yang tidak bergantung pada Dapodik dalam penginputan data. <br>
+    Inilah yang menyebabkan Actudent tidak dapat mengimpor data secara lengkap seperti halnya aplikasi E-Rapor
+    yang memang bergantung sepenuhnya pada Dapodik untuk penginputan datanya.
+  </p>
+  
+</div>
+
+<h3>6. Keterbatasan Aplikasi</h3>
 <div class="pl-25">
   <ol>
     <li>
