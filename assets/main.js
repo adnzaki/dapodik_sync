@@ -11,6 +11,8 @@ const App = {
       syncSuccess: false,
       disable: false,
       opsiPd: '',
+      importPtk: '',
+      tingkat: '',
       modal: null,
       showBackdrop: false,
     }
@@ -18,11 +20,21 @@ const App = {
   mounted() {
     this.submitText = this.defaultText
     this.opsiPd = $('input[name=opsiPd]').val()
+    this.importPtk = $('input[name=importPtk]').val()
+    this.tingkat = $('input[name=tingkat]').val()
     this.modal = new bootstrap.Modal(document.getElementById('successModal'), { keyboard: false })
     
     let obj = this
     $('input[name=opsiPd]').change(function() {
       obj.opsiPd = this.value
+    })
+
+    $('input[name=importPtk]').change(function() {
+      obj.importPtk = this.value
+    })
+
+    $('input[name=tingkat]').change(function() {
+      obj.tingkat = this.value
     })
   },
   methods: {
@@ -86,11 +98,12 @@ const App = {
       })
     },
     setAnggotaRombel() {
-      this.submitText = 'Memetakan anggota rombongan belajar...'
+      this.submitText = 'Memetakan anggota rombongan belajar Dapodik...'
       this.push('set-anggota-rombel', {}, res => {
         this.resetForm()
         // $('#successModal').modal('show')
         //this.modal.show()
+        this.successText.push(res.note)
         this.showMessage()
       })
     },
@@ -104,7 +117,9 @@ const App = {
         mode: 'cors',
         body: this.createFormData({ 
           data: JSON.stringify(data),
-          option: this.opsiPd
+          option: this.opsiPd,
+          ptk: this.importPtk,
+          tingkat: this.tingkat
         }),
         headers: {
           Authorization: `Bearer ${this.actudentToken}`

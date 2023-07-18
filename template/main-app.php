@@ -4,13 +4,13 @@
           <div class="row justify-content-center text-center">
             <div class="col-lg-6">
               <span class="badge bg-primary mb-3">Actudent Utility Tool</span>
-              <h2 class="text-dark mb-0">Dapodik Synchronizer v1.0</h2>
+              <h2 class="text-dark mb-0">Dapodik Puller</h2>
               <p class="lead">
                 Silakan ikuti <strong>
                   <a :href="appHost + '/dapodik_sync/petunjuk.php'">
                     petunjuk penggunaan 
                   </a></strong>
-                  Dapodik Synchronizer untuk menarik data
+                  Dapodik Puller untuk menarik data
                 dari Web Service lokal Dapodik anda
               </p>
             </div>
@@ -71,7 +71,7 @@
                 </div>
                 <div class="mb-4">
                   <div class="input-group input-group-dynamic">
-                    <label class="form-label">URL Actudent Sekolah Anda</label>
+                    <label class="form-label">URL Actudent Sekolah Anda (tanpa "http" atau "https")</label>
                     <input class="form-control" aria-label="Token Akses API Actudent" type="text" v-model="domain">
                   </div>
                 </div>
@@ -83,7 +83,29 @@
                   </div>
                 </div>
                 <div class="mb-4">
-                  <label class="form-label">Metode Penarikan</label>
+                  <label class="form-label">Tingkat Pendidikan</label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tingkat" id="sd" value="1" checked>
+                    <label class="form-check-label" for="sd">
+                      SD/sederajat
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tingkat" value="7" id="smp">
+                    <label class="form-check-label" for="smp">
+                      SMP/sederajat
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="tingkat" value="10" id="sma">
+                    <label class="form-check-label" for="sma">
+                      SMA/sederajat
+                    </label>
+                  </div>
+
+                </div>
+                <div class="mb-4">
+                  <label class="form-label">Metode Penarikan Data Siswa</label>
                   <div class="form-check">
                     <input class="form-check-input" type="radio" name="opsiPd" id="opsiPd1" value="pdBaru" checked>
                     <label class="form-check-label" for="opsiPd1">
@@ -104,6 +126,28 @@
                   </div>
 
                 </div>
+
+                
+
+                <div class="mb-4">
+                  <label class="form-label">Apakah ingin mengimpor data pegawai?
+                    <br /><i> (Perhatian! Baca petunjuk terlebih dahulu sebelum memilih opsi ini!)</i></label>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="importPtk" id="opsiPtk1" value="yes" checked>
+                    <label class="form-check-label" for="opsiPtk1">
+                      Ya
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="importPtk" value="no" id="opsiPtk2">
+                    <label class="form-check-label" for="opsiPtk2">
+                      Tidak
+                    </label>
+                  </div>
+                  
+
+                </div>
+
                 <div class="row">
                   <div class="col-md-12">
                     <button type="button" style="color: white;" class="btn bg-gradient-info w-100" :disabled="disable"

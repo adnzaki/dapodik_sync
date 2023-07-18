@@ -2,16 +2,20 @@
 <div class="pl-25">
   <h4>a. Peserta Didik Baru</h4>
   <p>
-    Dengan metode ini, sistem akan mengimpor peserta didik baru di tingkat awal (tingkat X). 
+    Dengan metode ini, sistem akan mengimpor peserta didik baru di tingkat awal (tingkat I untuk SD, VII untuk SMP dan X untuk SMK). 
     Sistem akan secara otomatis menambahkan peserta didik baru tersebut ke rombelnya masing-masing 
     sesuai dengan yang ada di Dapodik. 
   </p>
   <h4>b. Semua Peserta Didik</h4>
   <p>
-    Metode ini ditujukan untuk sekolah yang baru pertama kali menggunakan Actudent. 
+    Metode ini ditujukan untuk sekolah yang <strong>baru pertama kali menggunakan Actudent. </strong>
     Dengan metode ini, sistem akan mengimpor seluruh data peserta didik dari tingkat awal sampai akhir 
     serta memasukkan mereka ke rombelnya masing-masing secara otomatis sesuai 
-    dengan data yang ada pada Dapodik.
+    dengan data yang ada pada Dapodik. <br>
+    Perlu dicatat bahwa jika sekolah telah memiliki data siswa pada aplikasi Actudent, 
+    Dapodik Puller tidak akan mengimpor siswa yang memiliki nama dan nomor induk sekolah (NIS) yang sama, 
+    serta <strong>tidak akan memetakan rombel siswa yang telah ada di Actudent</strong>.
+    Untuk memetakan rombel siswa yang telah ada di Actudent, sekolah harus menginputnya secara manual di Actudent.
   </p>
   <h4>c. Pindahan</h4>
   <p>
@@ -20,7 +24,7 @@
     Pengguna harus memasukkan peserta didik tersebut secara manual dari dalam aplikasi Actudent.
   </p>
   <p>
-    Dapodik Synchronizer dapat mendeteksi adanya duplikasi data, sehingga setiap data peserta didik, orang tua, PTK dan rombel 
+    Dapodik Puller dapat mendeteksi adanya duplikasi data, sehingga setiap data peserta didik, orang tua, PTK dan rombel 
     yang masuk ke Actudent bisa dipastikan sama dengan yang ada di Dapodik. 
   </p>
 </div>
@@ -44,7 +48,11 @@
     Jenis pegawai akan diambil dari klasifikasi jenis PTK yang ada di Dapodik. 
     Misalnya Guru Kelas dan Guru Mapel akan dimasukkan jenis pegawai sebagai Guru di Actudent.
   </p>
-  <h3>5. Keterbatasan Aplikasi</h3>
+  
+</div>
+
+<h3>5. Keterbatasan Aplikasi</h3>
+<div class="pl-25">
   <ol>
     <li>
       Aplikasi ini hanya dapat digunakan untuk menambahkan data dari Dapodik, 

@@ -19,7 +19,7 @@
     </li>
     <li>
       Tambahkan aplikasi dengan mengisikan nama serta IP Address. 
-      Untuk Dapodik Synchronizer, isilah IP Address dengan "localhost"
+      Untuk Dapodik Puller, isilah IP Address dengan "localhost"
       <div class="row py-3">
         <div class="col-lg-6 col-12">
           <div class="card move-on-hover">
@@ -31,10 +31,10 @@
       </div>
     </li>
   </ol>
-  <h4>b. Instalasi Dapodik Synchronizer</h4>
+  <h4>b. Instalasi Dapodik Puller</h4>
   <p>
-    Terdapat 2 jenis file instalasi Dapodik Synchronizer, 
-    yaitu "Standalone" yang hanya berisi aplikasi Dapodik Synchronizer, 
+    Terdapat 2 jenis file instalasi Dapodik Puller, 
+    yaitu "Standalone" yang hanya berisi aplikasi Dapodik Puller, 
     dan "Full Installer" yang dibundle dengan aplikasi Xampp.
   </p>
   <p>
@@ -44,20 +44,20 @@
     Jika anda memilih versi "Full Installer", 
     pastikan untuk tidak menginstalnya di drive "C:\" karena akan membatasi beberapa fitur dari Xampp.
   </p>
-  <h4>c. Membuka Aplikasi Dapodik Synchronizer</h4>
+  <h4>c. Membuka Aplikasi Dapodik Puller</h4>
   <p>
-    Karena Dapodik Synchronizer adalah aplikasi berbasis web, 
+    Karena Dapodik Puller adalah aplikasi berbasis web, 
     maka anda hanya perlu mengetik URL-nya di web browser. 
-    Silakan buka halaman "localhost/dapodik_sync" untuk membuka aplikasi Dapodik Synchronizer.
+    Silakan buka halaman "localhost/dapodik_sync" untuk membuka aplikasi Dapodik Puller.
   </p>
   <p>
     Setelah aplikasi terbuka, 
-    pastikan anda membaca penjelasan tentang proses penarikan data melalui Dapodik Synchronizer 
+    pastikan anda membaca penjelasan tentang proses penarikan data melalui Dapodik Puller 
     agar anda tidak salah dalam memilih <a href="#penarikan-data">metode penarikan data.</a> 
   </p>
-  <h4>d. Pengisian Form Dapodik Synchronizer</h4>
+  <h4>d. Pengisian Form Dapodik Puller</h4>
   <p>
-    Terdapat 4 kolom isian yang harus anda isi untuk menarik data dari Dapodik 
+    Terdapat 7 kolom isian yang harus anda isi untuk menarik data dari Dapodik 
     seperti pada gambar berikut:
   </p>
   <div class="row py-3">
@@ -88,7 +88,7 @@
     <li>
       URL Actudent Sekolah Anda
       <p>
-        Ini adalah URL yang anda gunakan untuk membuka layanan Actudent sekolah anda,
+        Ini adalah URL yang anda gunakan untuk membuka layanan Actudent sekolah anda, misalnya
         "smkn999kotabekasi.actudent.com". Anda tidak perlu menambahkan protokol "http"
         atau "https" untuk mengisi ini.
       </p>
@@ -96,14 +96,28 @@
     <li>
       Token Akses Actudent
       <p>
-        Token ini bisa anda dapatkan pada aplikasi Actudent di halaman profil pengguna.
+        Token ini bisa anda dapatkan pada aplikasi Actudent di halaman pengaturan aplikasi.
         Token ini hanya diperuntukkan khusus untuk admin utama Actudent.
+      </p>
+    </li>
+    <li>
+      Tingkat Pendidikan
+      <p>
+        Opsi tingkat pendidikan digunakan untuk menentukan peserta didik baru, yakni tingkat 1 untuk SD/sederajat, 
+        7 untuk SMP/sederajat dan 10 untuk SMA/sederajat. Salah memilih tingkat pendidikan dapat menyebabkan
+        Sync API tidak dapat membaca peserta didik baru yang ada di Dapodik.
       </p>
     </li>
     <li>
       Metode Penarikan Data
       <p>
-        Silakan baca di halaman <a href="#penarikan-data">"Petunjuk Penarikan Data"</a> untuk memahami metode ini.
+        Silakan baca di halaman <strong><a href="#penarikan-data">"Petunjuk Penarikan Data"</a></strong> untuk memahami metode ini.
+      </p>
+    </li>
+    <li>
+      Opsi Impor Data PTK
+      <p>
+        Anda dapat memilih apakah akan mengimpor data PTK atau tidak. Perlu diketahui bahwa <strong>Dapodik Puller menggunakan NIP (untuk PNS), NUPTK (untuk non-PNS yang telah memiliki) dan NIK (untuk non-PNS yang belum memiliki NUPTK) dalam menentukan keunikan data pegawai</strong>. Jika sekolah anda tidak menggunakan salah satu dari tiga jenis nomor unik tersebut (NIP, NUPTK atau NIK), maka silakan pilih "Tidak" untuk menghindari terjadinya duplikasi data pegawai.
       </p>
     </li>
   </ol>
