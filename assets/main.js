@@ -180,7 +180,7 @@ const App = {
 
       let basePath
       this.domain === 'localhost'
-        ? basePath = 'actudent/api/public'
+        ? basePath = 'actudent-web/api/public'
         : basePath = 'api/public'
 
       return `${protocol}://${this.domain}/${basePath}/sync/`

@@ -34,8 +34,7 @@
   <h4>a. Nomor Induk Pegawai</h4>
   <p>
     Sistem mengklasifikasikan nomor induk pegawai berdasarkan masing-masing jenis pegawai.
-    Untuk PNS akan diambil dari NIP-nya dan Non-PNS akan diambil dari NUPTK.
-    Jika pegawai Non-PNS tersebut belum memiliki NUPTK, maka akan digantikan dengan NIK.
+    Untuk PNS/PPPK akan diambil dari NIP-nya dan Non-PNS akan diambil dari NIK.
     Jika NIK pegawai tersebut belum diisi di Dapodik, maka sistem akan mengosongkannya.
   </p>
   <h4>b. Jabatan</h4>

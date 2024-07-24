@@ -117,7 +117,7 @@
     <li>
       Opsi Impor Data PTK
       <p>
-        Anda dapat memilih apakah akan mengimpor data PTK atau tidak. Perlu diketahui bahwa <strong>Dapodik Puller menggunakan NIP (untuk PNS), NUPTK (untuk non-PNS yang telah memiliki) dan NIK (untuk non-PNS yang belum memiliki NUPTK) dalam menentukan keunikan data pegawai</strong>. Jika sekolah anda tidak menggunakan salah satu dari tiga jenis nomor unik tersebut (NIP, NUPTK atau NIK), maka silakan pilih "Tidak" untuk menghindari terjadinya duplikasi data pegawai.
+        Anda dapat memilih apakah akan mengimpor data PTK atau tidak. Di versi terbaru, Dapodik Puller telah mendukung sepenuhnya pengecekan duplikasi data PTK. Maka dari itu PTK yang sudah ada di Actudent tidak akan diimpor kembali meskipun pengguna memilih opsi untuk impor data PTK.
       </p>
     </li>
   </ol>
